@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Movie Action-->
+    
+    <record id='movie_action' model='ir.actions.act_window'>
+        <field name="name">Movie Rentals</field>
+        <field name="res_model">movie</field> 
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create the first entry!
+                </p>
+        </field>
+    </record>
+
+    <record id="movie_form" model="ir.ui.view">
+        <field name="name">movie_rental.movie.form</field>
+        <field name="type">form</field>
+        <field name="model">movie</field>
+        <field name="arch" type="xml">
+            <form string="Movie">
+                <sheet>
+                    <group>
+                        <group col="2" name="movie_details" string="Movie Details">
+                            <field name="movie_title"/>
+                            <field name="movie_genre"/>
+                        </group>
+                        <group name="rental_details" string="Rental Details">
+                            <field name="movie_num_copies"/>
+                            <field name="movie_availability"/>  
+                        </group>
+                    </group>
+                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    
+    
+
+    <!--Added a search view to search for the title of a movie-->
+    <record model="ir.ui.view" id="movie_search_view">
+        <field name="name">movie.search</field>
+        <field name="model">movie</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="movie_title"/>
+            </search>
+        </field>
+    </record>
+
+
+
+    <!--Movie tree display-->
+    <record id="movie_tree" model="ir.ui.view">
+        <field name="name">movie_rental.movie.tree</field>
+        <field name="type">tree</field>
+        <field name="model">movie</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="movie_title"/>
+                <field name="movie_genre"/>
+                <field name="movie_num_copies"/>
+                <field name="movie_availability"/>  
+            </tree>
+        </field>
+    </record>
+    <record id="movie_tree" model="ir.ui.view">
+        <field name="name">movie_rental.movie.tree</field>
+        <field name="type">tree</field>
+        <field name="model">movie</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="movie_title"/>
+                <field name="movie_genre"/>
+                <field name="movie_num_copies"/>
+                <field name="movie_availability"/>  
+            </search>
+        </field>
+    </record>
+
+    <!--Movie menu items-->
+    <menuitem 
+        id="movie_base_menu"
+        name="Movie shop"
+        action="movie_action"
+    />
+
+
+    <menuitem 
+        id="genre_base_menu" 
+        name="Genre Selection"
+        parent="movie_base_menu"
+        action="movie_action"
+        
+    />
+
+
+    <menuitem 
+        id="horror_base_menu" 
+        name="Horror" 
+        parent="genre_base_menu"
+        action="movie_action"
+    />
+
+    <menuitem
+        id="comedy_base_menu"
+        name="Comedy"
+        parent="genre_base_menu"
+        action="movie_action"
+    />
+
+    <menuitem
+        id="action_base_menu"
+        name="Action"
+        parent="genre_base_menu"
+        action="movie_action"
+    />
+    
+    <menuitem 
+        id="sci-fi_base_menu"
+        name="Sci-Fi"
+        parent="genre_base_menu"
+        action="movie_action"
+    />
+    
+    <menuitem  
+        id="love_base_menu"
+        name="Love"
+        parent="genre_base_menu"
+        action="movie_action"
+    />
+    
+    <!--Movie menu item-->
+    <menuitem 
+        id="catalog_movie_menu" 
+        name="Movies" 
+        parent="movie_base_menu" 
+        action="movie_action"
+        
+        />
+    
+
+    
+            
+
+</odoo>

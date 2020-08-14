@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        }, {
+            "name": "Eric's Movie Rental Software",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${command:python.interpreterPath}",
+            "console": "integratedTerminal",
+            "program": "${/User/ericcallaway/odoo/python}", //Changed last path from python to addons
+            "args": [
+                "--config=/User/ericcallaway/odoo/odoo-server.conf",
+                "--db-filter=test2",
+                "--update=movie_rentals",
+                // "--log-level=debug",
+                // "--test-enable"
+            ],
+            "cwd": "${workspaceRoot}",
+            "env": {},
+            "envFile": "{workspaceRoot}/.env"
+
+        }
+    ]
+}
