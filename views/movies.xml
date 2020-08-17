@@ -14,8 +14,24 @@
         </field>
     </record>
 
+    <!--Movie/ Sci-Fi Action-->
+    <record id='movie_action_scifi' model='ir.actions.act_window'>
+        <field name="name">Movie Rentals</field>
+        <field name="res_model">movie</field> 
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_movie_genre_scifi': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create the first entry!
+                </p>
+        </field>
+    </record>
+
+
+    <!--Movie form view-->
     <record id="movie_form" model="ir.ui.view">
-        <field name="name">movie_rental.movie.form</field>
+        <field name="name">movie_rental.form.view</field>
         <field name="type">form</field>
         <field name="model">movie</field>
         <field name="arch" type="xml">
@@ -25,6 +41,7 @@
                         <group col="2" name="movie_details" string="Movie Details">
                             <field name="movie_title"/>
                             <field name="movie_genre"/>
+                            <field name="additional_content"/>
                         </group>
                         <group name="rental_details" string="Rental Details">
                             <field name="movie_num_copies"/>
@@ -40,13 +57,23 @@
     
     
 
-    <!--Added a search view to search for the title of a movie-->
+    <!--Movie search view-->
     <record model="ir.ui.view" id="movie_search_view">
-        <field name="name">movie.search</field>
+        <field name="name">movie_search</field>
         <field name="model">movie</field>
         <field name="arch" type="xml">
-            <search>
+            <search string="Movie Information">
                 <field name="movie_title"/>
+                <field name="movie_genre"/>
+                <filter string="Sci-Fi" name="movie_genre_scifi" domain="[('movie_genre', '=', 'scifi')]"/>
+                <filter string="Action" name="movie_genre_action" domain="[('movie_genre', '=', 'action')]"/>
+                <filter string="Horror" name="movie_genre_horror" domain="[('movie_genre', '=', 'horror')]"/>
+                <filter string="Love" name="movie_genre_love" domain="[('movie_genre', '=', 'love')]"/>
+                <filter string="Comedy" name="movie_genre_comedy" domain="[('movie_genre', '=', 'comedy')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_title" string="Title" domain="[]" context="{'group_by':'movie_title'}" help="Group movies Coursewise"/>
+                    <filter name="group_by_genre"  string="Genre" context="{'group_by': 'movie_genre'}" help="Group movies by genre"/>
+				</group>	
             </search>
         </field>
     </record>
@@ -67,34 +94,31 @@
             </tree>
         </field>
     </record>
-    <record id="movie_tree" model="ir.ui.view">
-        <field name="name">movie_rental.movie.tree</field>
-        <field name="type">tree</field>
-        <field name="model">movie</field>
-        <field name="arch" type="xml">
-            <search>
-                <field name="movie_title"/>
-                <field name="movie_genre"/>
-                <field name="movie_num_copies"/>
-                <field name="movie_availability"/>  
-            </search>
-        </field>
-    </record>
+    
 
-    <!--Movie menu items-->
+    <!--Base menu item-->
     <menuitem 
-        id="movie_base_menu"
-        name="Movie shop"
+        id="base_menu"
+        name="Eric's Billion dollar rental business"
         action="movie_action"
     />
 
+    
 
+    <!--Movie menu item-->
+    <menuitem 
+        id="catalog_movie_menu" 
+        name="Movies" 
+        parent="base_menu" 
+        action="movie_action"
+        />
+
+    <!--Genre based menu items-->
     <menuitem 
         id="genre_base_menu" 
         name="Genre Selection"
-        parent="movie_base_menu"
+        parent="catalog_movie_menu"
         action="movie_action"
-        
     />
 
 
@@ -123,7 +147,7 @@
         id="sci-fi_base_menu"
         name="Sci-Fi"
         parent="genre_base_menu"
-        action="movie_action"
+        action="movie_action_scifi"
     />
     
     <menuitem  
@@ -132,18 +156,4 @@
         parent="genre_base_menu"
         action="movie_action"
     />
-    
-    <!--Movie menu item-->
-    <menuitem 
-        id="catalog_movie_menu" 
-        name="Movies" 
-        parent="movie_base_menu" 
-        action="movie_action"
-        
-        />
-    
-
-    
-            
-
 </odoo>

@@ -28,7 +28,9 @@
          'security/ir.model.access.csv', #This is the modified security access file
          #'views/views.xml',
          'views/movies.xml',
-         'views/games.xml'
+         'views/video_games.xml',
+         'views/orders.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -5,7 +5,9 @@ class video_games(models.Model):
 
     game_title = fields.Char('Title', required = True) #Title can be anything
     game_genre = fields.Char('Genre', required = True) # Figure out how to make the genre selection only a few options i.e Horror, action, comdedy, etc...  
-    ERSB_rating = fields.Char('ERSB rating', required = True)#ERSB rating
-    num_copies = fields.Integer('Copies available', required = True)# How many copies that are available 
-    available = fields.Boolean('Is the title available?', required = True) #Is the title available or not
+    ESRB_rating = fields.Char('ESRB rating', required = True)#ERSB rating
+    game_num_copies = fields.Integer('copies available', required = True)# How many copies that are available 
+    game_available = fields.Boolean('Is the title available?', required = True) #Is the title available or not
+
+    additional_movie_content = fields.Many2one("movie", string="Corresponding Movies")
                                          

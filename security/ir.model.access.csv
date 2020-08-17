@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_movie,movie_rentals.movie,model_movie,,1,1,1,1
+access_games,movie_rentals.video_games,model_video_games,,1,1,1,1
+access_orders,movie_rentals.orders,model_orders,,1,1,1,1
