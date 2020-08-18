@@ -10,4 +10,5 @@ class video_games(models.Model):
     game_available = fields.Boolean('Is the title available?', required = True) #Is the title available or not
 
     additional_movie_content = fields.Many2one("movie", string="Corresponding Movies")
-                                         
+    
+                                     
