@@ -6,7 +6,7 @@
         <field name="name">Movie Rentals</field>
         <field name="res_model">movie</field> 
         <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,pivot,kanban</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create the first entry!
@@ -41,11 +41,12 @@
                             <field name="movie_title"/>
                             <field name="movie_genre"/>
                             <field name="additional_content"/>
-                            <!-- <field name="video_game_list"/> -->
+                            <field name="video_game_list"/>
                         </group>
                         <group name="rental_details" string="Rental Details">
                             <field name="movie_num_copies"/>
-                            <field name="movie_availability"/>  
+                            <field name="movie_availability"/> 
+                            <field name="movie_status"/> 
                         </group>
                     </group>
                     
@@ -64,6 +65,7 @@
         <field name="arch" type="xml">
             <search string="Movie Information">
                 <field name="movie_title"/>
+                <field name="movie_status"/>
                 <field name="movie_genre"/>
                 <filter string="Sci-Fi" name="movie_genre_scifi" domain="[('movie_genre', '=', 'scifi')]"/>
                 <filter string="Action" name="movie_genre_action" domain="[('movie_genre', '=', 'action')]"/>
@@ -94,6 +96,45 @@
             </tree>
         </field>
     </record>
+    
+    <!--Movie Pivot view-->
+    <record id="movie_pivot" model="ir.ui.view">
+        <field name="name">movie_rental.movie.pivot</field>
+        <field name="type">pivot</field>
+        <field name="model">movie</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="movie_title"/>
+                <field name="movie_genre"/>
+                <field name="movie_num_copies"/>
+                <field name="movie_availability"/>  
+            </pivot>
+        </field>
+    </record>
+
+    <!--Movie Kanban view-->
+    <record id="movie_kanban" model="ir.ui.view"> 
+        <field name="name">movie_rental.movie.kanban</field>
+        <field name="type">kanban</field>
+        <field name="model">movie</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="movie_status">
+                <field name="movie_title"/>
+                <field name="movie_genre"/>
+                <field name="movie_num_copies"/>
+                <field name="movie_availability"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card_oe_kanban_global_click">
+                            <field name="movie_title" />
+                        </div> 
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
     
 
     <!--Base menu item-->

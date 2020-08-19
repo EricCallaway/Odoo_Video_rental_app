@@ -2,6 +2,7 @@ from odoo import models, fields
 
 class video_games(models.Model):
     _name = 'video_games'
+    _rec_name = 'game_title'
 
     game_title = fields.Char('Title', required = True) #Title can be anything
     game_genre = fields.Char('Genre', required = True) # Figure out how to make the genre selection only a few options i.e Horror, action, comdedy, etc...  

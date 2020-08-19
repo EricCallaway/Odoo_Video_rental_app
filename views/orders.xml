@@ -12,6 +12,8 @@
                     <group>
                         <group col="2" name="orders_details" string="orders Details">
                             <field name="Movie_or_Video_game"/>
+                            <filter string="Movie" name="movie_selection" domain="[('Movie_or_Video_game', '=', 'movie')]"/>
+                            <filter string="Video Game" name="movie_selection" domain="[('Movie_or_Video_game', '=', 'video_game')]"/>
                         </group>
                     </group>
                 </sheet>

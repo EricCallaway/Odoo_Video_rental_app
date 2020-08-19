@@ -74,18 +74,19 @@
             </tree>
         </field>
     </record>
-    <record id="video_games_tree" model="ir.ui.view">
-        <field name="name">movie_rental.video_games.tree</field>
-        <field name="type">tree</field>
+    
+    <!--Video Games Pivot view-->
+    <record id="video_games_pivot" model="ir.ui.view">
+        <field name="name">movie_rental.video_games.pivot</field>
+        <field name="type">pivot</field>
         <field name="model">video_games</field>
         <field name="arch" type="xml">
-            <search>
+            <pivot>
                 <field name="game_title"/>
                 <field name="game_genre"/>
-                <field name="ESRB_rating"/>
                 <field name="game_num_copies"/>
                 <field name="game_available"/>  
-            </search>
+            </pivot>
         </field>
     </record>
 
