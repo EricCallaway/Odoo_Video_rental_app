@@ -8,7 +8,7 @@
         <field name="name">Video Games</field>
         <field name="res_model">video_games</field> 
         <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form,pivot</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create the first entry!
@@ -33,6 +33,7 @@
                         <group name="rental_details" string="Rental Details">
                             <field name="game_num_copies"/>
                             <field name="game_available"/>  
+                            <field name="game_status"/>
                         </group>
                     </group>
                     
@@ -42,7 +43,7 @@
     </record>
 
     <!--Video games Search view-->
-    <!-- <record model="ir.ui.view" id="movie_search_view">
+    <record model="ir.ui.view" id="movie_search_view">
         <field name="name">video_game_search</field>
         <field name="model">video_games</field>
         <field name="arch" type="xml">
@@ -50,14 +51,15 @@
                 <field name="game_title"/>
                 <field name="game_genre"/>
                 <field name="ESRB_rating"/>
+                <field name="game_status"/>
                 <group expand="0" string="Group By">
-                    <filter name="group_by_title" string="Title" domain="[]" context="{'group_by':'movie_title'}" help="Group games Coursewise"/>
-                    <filter name="group_by_genre"  string="Genre" context="{'group_by': 'movie_genre'}" help="Group games by genre"/>
+                    <filter name="group_by_title" string="Title" domain="[]" context="{'group_by':'game_title'}" help="Group games Coursewise"/>
+                    <filter name="group_by_genre"  string="Genre" context="{'group_by': 'game_genre'}" help="Group games by genre"/>
                     <filter name="group_by_ESRB_rating" string="ESRB" context="{'group_by': 'ESRB_rating'}" help="Group games by ESRB rating"/>
 				</group>	
             </search>
         </field>
-    </record> -->
+    </record>
 
     <!--Video games tree display-->
     <record id="video_games_tree" model="ir.ui.view">
@@ -87,6 +89,29 @@
                 <field name="game_num_copies"/>
                 <field name="game_available"/>  
             </pivot>
+        </field>
+    </record>
+
+    <!--Video Games Kanban view-->
+    <record id="video_games_kanban" model="ir.ui.view"> 
+        <field name="name">movie_rental.video_games.kanban</field>
+        <field name="type">kanban</field>
+        <field name="model">video_games</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="game_status">
+                <field name="game_title"/>
+                <field name="game_genre"/>
+                <field name="game_num_copies"/>
+                <field name="game_available"/>
+                <field name="ESRB_rating"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <field name="game_title" />
+                        </div> 
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 

@@ -23,4 +23,7 @@ class movie(models.Model):
     movie_availability = fields.Boolean('Is the title available?', required = True) #Is the title available or not
 
     additional_content = fields.Many2one(string="Corresponding Video Games", comodel_name="video_games") 
-    video_game_list = fields.One2many(string="Video Game List", inverse_name="additional_movie_content", comodel_name="video_games")    #Keep getting the "Uncaught TypeError: Renderer is not a constructor" error when I include this into the form view                                
+    video_game_list = fields.One2many(string="Video Game List", inverse_name="additional_movie_content", comodel_name="video_games")    #Keep getting the "Uncaught TypeError: Renderer is not a constructor" error when I include this into the form view        
+
+    posters = fields.Binary(string="Posters") #Adding poster field and making the type a Binary field to hold the images of the posters
+

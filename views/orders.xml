@@ -10,10 +10,14 @@
             <form string="Orders">
                 <sheet>
                     <group>
-                        <group col="2" name="orders_details" string="orders Details">
-                            <field name="Movie_or_Video_game"/>
-                            <filter string="Movie" name="movie_selection" domain="[('Movie_or_Video_game', '=', 'movie')]"/>
-                            <filter string="Video Game" name="movie_selection" domain="[('Movie_or_Video_game', '=', 'video_game')]"/>
+                        <group col="2" name="orders_details" string="Order Details">
+                            <field name="movie_order"/>
+                        </group>
+                        <group>
+                            <field name="game_order"/>
+                        </group>
+                        <group>
+                            <field name="date_of_order"/>
                         </group>
                     </group>
                 </sheet>
@@ -41,7 +45,9 @@
         <field name="model">orders</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="Movie_or_Video_game"/>
+                <field name="movie_order"/>
+                <field name="game_order"/>
+                <field name="date_of_order"/>
             </tree>
         </field>
     </record>

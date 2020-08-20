@@ -12,4 +12,6 @@ class video_games(models.Model):
 
     additional_movie_content = fields.Many2one("movie", string="Corresponding Movies")
     
-                                     
+    game_status = fields.Selection(String="Status", selection=[('in_stock', 'In-Stock'),
+                                                                ('checked_out','Checked Out')],
+                                                                default="in_stock")         

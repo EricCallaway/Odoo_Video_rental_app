@@ -2,9 +2,12 @@ from odoo import models, fields
 
 class orders(models.Model):
     _name = 'orders'
+    _rec_name = 'movie_order'
 
-    #Movie_or_Video_game = fields.Char('Movie or Video game.', required = True)
-    #Movie_or_Video_game = fields.Selection(selection_add=[('Movie','Video games')], 'state', default="Movie")
-    Movie_or_Video_game = fields.Selection(string="Type", selection=[('movie', 'Movie'),
-                                                              ('video_game', 'Video Game')],
-                                                               default="movie")
+    
+
+    
+                                                            
+    movie_order = fields.Many2one("movie", string="Movie ordered") 
+    game_order = fields.Many2one("video_games", string="Video Game ordered")
+    date_of_order = fields.Date(string="Date of Order")
