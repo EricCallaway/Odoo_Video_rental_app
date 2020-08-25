@@ -29,6 +29,8 @@
                             <field name="game_genre"/>
                             <field name="ESRB_rating"/>
                             <field name="additional_movie_content"/>
+                            <field name="game_cover" widget="image" class="oe_avatar"/>
+
                         </group>
                         <group name="rental_details" string="Rental Details">
                             <field name="game_num_copies"/>
@@ -53,8 +55,8 @@
                 <field name="ESRB_rating"/>
                 <field name="game_status"/>
                 <group expand="0" string="Group By">
-                    <filter name="group_by_title" string="Title" domain="[]" context="{'group_by':'game_title'}" help="Group games Coursewise"/>
-                    <filter name="group_by_genre"  string="Genre" context="{'group_by': 'game_genre'}" help="Group games by genre"/>
+                    <filter name="group_by_title" string="Title" domain="[]" context="{'group_by':'game_title'}" help="Group games by Title"/>
+                    <filter name="group_by_genre"  string="Genre" context="{'group_by': 'game_genre'}" help="Group games by Genre"/>
                     <filter name="group_by_ESRB_rating" string="ESRB" context="{'group_by': 'ESRB_rating'}" help="Group games by ESRB rating"/>
 				</group>	
             </search>

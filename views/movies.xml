@@ -42,7 +42,7 @@
                             <field name="movie_genre"/>
                             <field name="additional_content"/>
                             <field name="video_game_list"/>
-                            <field name="posters" widget="posters" class="oe_avatar"/>
+                            <field name="posters" widget="image" class="oe_avatar"/>
                         </group>
                         <group name="rental_details" string="Rental Details">
                             <field name="movie_num_copies"/>
@@ -126,9 +126,12 @@
                 <field name="movie_availability"/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <field name="movie_title" />
+                        <div class="oe_kanban_global_click"> 
+                            <div class="w3-container">
+                                <field name="movie_title" />
+                            </div>
                         </div> 
+                        
                     </t>
                 </templates>
             </kanban>

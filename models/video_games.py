@@ -15,3 +15,7 @@ class video_games(models.Model):
     game_status = fields.Selection(String="Status", selection=[('in_stock', 'In-Stock'),
                                                                 ('checked_out','Checked Out')],
                                                                 default="in_stock")         
+
+
+
+    game_cover = fields.Binary(string="Game Cover")#Adding the game cover to the model via Binary field

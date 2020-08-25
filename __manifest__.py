@@ -29,7 +29,8 @@
          #'views/views.xml',
          'views/movies.xml',
          'views/video_games.xml',
-         'views/orders.xml', #This view is not working at the moment
+         'views/orders.xml', 
+         'views/customer.xml',
 
     ],
     # only loaded in demonstration mode

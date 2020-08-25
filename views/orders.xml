@@ -20,6 +20,21 @@
                             <field name="date_of_order"/>
                         </group>
                     </group>
+                    <group>
+                        <notebook colspan="4" name="customer_details">
+                            <page string="Customer Details">
+                                <group>
+                                    <!-- <field name="customer_name"/>
+                                    <field name="customer_rating"/> -->
+                                </group>
+                            </page>
+                            <page col="2" string="Sale Details">
+                                <group>
+                                    <!-- <field name="num_items_ordered"/> -->
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
                 </sheet>
             </form>
         </field>
