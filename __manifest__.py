@@ -27,10 +27,13 @@
     'data': [
          'security/ir.model.access.csv', #This is the modified security access file
          #'views/views.xml',
-         'views/movies.xml',
+         
          'views/video_games.xml',
          'views/orders.xml', 
          'views/customer.xml',
+         'wizards/past_due.xml',
+         'views/movies.xml',
+         
 
     ],
     # only loaded in demonstration mode

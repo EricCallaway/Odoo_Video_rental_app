@@ -26,4 +26,8 @@ class movie(models.Model):
     video_game_list = fields.One2many(string="Video Game List", inverse_name="additional_movie_content", comodel_name="video_games")    #Keep getting the "Uncaught TypeError: Renderer is not a constructor" error when I include this into the form view        
 
     posters = fields.Binary(string="Posters") #Adding poster field and making the type a Binary field to hold the images of the posters
-
+    color = fields.Integer('Color Index')
+    popularity = fields.Selection(stirng="Popularity", selection=[('low', 'Low'),
+                                                                  ('medium', 'Medium'),
+                                                                  ('high', 'High')],
+                                                                  default="medium")

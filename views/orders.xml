@@ -73,6 +73,12 @@
         id="orders_base_menu"
         name="Orders"
         parent="base_menu"
+    />
+
+    <menuitem
+        id="orders_sub_base_menu"
+        name="Order details"
+        parent="orders_base_menu"
         action="orders_action"
     />
 </odoo>

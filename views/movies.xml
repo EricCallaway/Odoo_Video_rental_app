@@ -35,6 +35,9 @@
         <field name="model">movie</field>
         <field name="arch" type="xml">
             <form string="Movie">
+                <header>
+                    <button name="%(movie__rentals.pastDue_action)d" string="Past due movies" type="action" class="oe_highlight"/>
+                </header>
                 <sheet>
                     <group>
                         <group col="2" name="movie_details" string="Movie Details">
@@ -119,19 +122,63 @@
         <field name="type">kanban</field>
         <field name="model">movie</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="movie_status">
+            <kanban default_group_by="movie_genre" class="o_kanban_small_column">
                 <field name="movie_title"/>
                 <field name="movie_genre"/>
                 <field name="movie_num_copies"/>
                 <field name="movie_availability"/>
+                <field name="color"/>
+                <field name="posters"/>
+                <field name="popularity"/>
+                <progressbar field="popularity" colors='{"low": "danger", "medium": "warning", "high": "success"}'/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click"> 
-                            <div class="w3-container">
-                                <field name="movie_title" />
+                        <div t-attf-class="oe_kanban_color_#{record.color.raw_value} oe_kanban_global_click">
+                            <div class="o_dropdown_kanban dropdown">
+                                <a class="dropdown-toggle btn"
+                                    data-toggle="dropdown" role="menu"
+                                    href="#">
+                                    <span class="fa fa-ellipsis-v"/>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <t t-if="widget.editable">
+                                        <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                    </t>
+                                    <t t-if="widget.deletable">
+                                        <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                    </t>
+                                    <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                </div>
                             </div>
-                        </div> 
-                        
+                            <div class="oe_kanban_body">    
+                                <div>
+                                    <strong>
+                                        <a type="open"><field name="movie_title"/></a>
+                                    </strong>
+                                </div>
+                                <ul>
+                                    <li><field name="movie_genre"/></li>
+                                    <li><field name="movie_status"/></li>
+                                </ul>
+                            </div>
+                            <div class="oe_kanban_footer">
+                            
+                            </div>
+                            <div class="oe_kanban_footer_left">
+                                <field name="movie_availability" widget="kanban-activity"/>
+                            </div>
+                            <div class="oe_kanban_footer_right">
+                                <field name="posters"/>
+                                <img t-att-src="kanban_image('movie', 'posters', record.posters.raw_value)"
+                                     t-att-title="record.movie_title.value"
+                                     t-att-alt="record.movie_title.value"
+                                     width="100"
+                                     height="100"
+                                     class="oe_kanban_avatar"
+                                     />
+                            </div>
+                            <div class="oe_clear"/>
+                        </div>
                     </t>
                 </templates>
             </kanban>
